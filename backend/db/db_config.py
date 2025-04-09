@@ -3,7 +3,7 @@ import pyodbc
 def get_connection():
     connection = pyodbc.connect(
         "DRIVER={ODBC Driver 17 for SQL Server};"
-        "SERVER=DIEGOC\\SQLEXPRESS02;"
+        "SERVER=***********;"  # Reemplaza con tu servidor
         "DATABASE=FlightDB;"
         "Trusted_Connection=yes;"
     )

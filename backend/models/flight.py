@@ -1,5 +1,6 @@
 class Flight:
-    def __init__(self, airline, flight_number, origin, destination, departure_time, arrival_time):
+    def __init__(self, airline, flight_number, origin, destination, departure_time, arrival_time, id=None):
+        self.id = id
         self.airline = airline
         self.flight_number = flight_number
         self.origin = origin

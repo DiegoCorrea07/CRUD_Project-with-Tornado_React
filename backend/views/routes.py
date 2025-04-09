@@ -8,6 +8,16 @@ class MainHandler(tornado.web.RequestHandler):
 class FlightHandler(tornado.web.RequestHandler):
     controller = FlightController()
 
+    def set_default_headers(self):
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "x-requested-with, Content-Type")
+        self.set_header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+
+    def options(self, flight_id=None):
+        # Maneja las solicitudes preflight de CORS
+        self.set_status(204)
+        self.finish()
+
     def get(self, flight_id=None):
         if flight_id:
             self.write(self.controller.get_by_id(flight_id))

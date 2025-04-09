@@ -9,7 +9,12 @@ class FlightRepository:
             cursor = conn.cursor()
             cursor.execute("SELECT * FROM flights")
             rows = cursor.fetchall()
-            return [Flight(*row) for row in rows]
+            flights = []
+            for row in rows:
+                id, airline, flight_number, origin, destination, departure_time, arrival_time = row
+                flight = Flight(airline, flight_number, origin, destination, departure_time, arrival_time, id)
+                flights.append(flight)
+            return flights
 
     @staticmethod
     def get_by_id(flight_id):
@@ -18,7 +23,22 @@ class FlightRepository:
             cursor = conn.cursor()
             cursor.execute("SELECT * FROM flights WHERE id = ?", flight_id)
             row = cursor.fetchone()
-            return Flight(*row) if row else None
+            if row:
+                flight = Flight(*row)
+                return flight
+            return None
+
+    @staticmethod
+    def get_by_flight_number(flight_number):
+        """Obtiene un vuelo por número de vuelo."""
+        with get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM flights WHERE flight_number = ?", flight_number)
+            row = cursor.fetchone()
+            if row:
+                flight = Flight(*row)
+                return flight
+            return None
 
     @staticmethod
     def create(flight):
@@ -37,7 +57,7 @@ class FlightRepository:
         with get_connection() as conn:
             cursor = conn.cursor()
             cursor.execute("""
-                UPDATE flights SET airline=?, flight_number=?, origin=?, destination=?, 
+                UPDATE flights SET airline=?, flight_number=?, origin=?, destination=?,
                 departure_time=?, arrival_time=? WHERE id=?
             """, (flight.airline, flight.flight_number, flight.origin, flight.destination,
                   flight.departure_time, flight.arrival_time, flight_id))
@@ -50,4 +70,3 @@ class FlightRepository:
             cursor = conn.cursor()
             cursor.execute("DELETE FROM flights WHERE id = ?", flight_id)
             conn.commit()
-
