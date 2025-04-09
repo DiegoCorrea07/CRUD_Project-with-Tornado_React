@@ -110,7 +110,6 @@ Este proyecto fue desarrollado por:
 
 - **Diego Correa**  
   - [GitHub](https://github.com/DiegoCorrea07)  
-  - [LinkedIn](https://www.linkedin.com/in/diego-correa)
 
 ---
 
