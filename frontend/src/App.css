@@ -1,0 +1,144 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.app-container {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.add-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+
+.add-flight-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  height: 80%;
+  max-width: 600px;
+  overflow-x: auto;
+}
+
+.flight-list-container {
+  width: 100%;
+  overflow-x: auto; /* Agrega scroll horizontal si la tabla es muy ancha en pantallas pequeñas */
+}
+
+.flight-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.flight-table th,
+.flight-table td {
+  border: 1px solid #ddd;
+  padding: 10px; /* Aumenta el padding para más espacio */
+  text-align: center;
+}
+
+.flight-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.flight-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.flight-table .edit-button,
+.flight-table .delete-button {
+  padding: 8px 12px; /* Mejora el tamaño de los botones */
+  margin-right: 5px;
+  border: none;
+  border-radius: 5px; /* Bordes más redondeados */
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out; /* Transición suave para el hover */
+}
+
+.flight-table .edit-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.flight-table .delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.flight-table .edit-button:hover,
+.flight-table .delete-button:hover {
+  opacity: 0.8;
+}
+
+.actions-column {
+  white-space: nowrap; /* Evita que los botones se envuelvan */
+  text-align: center; /* Centra los botones en la celda */
+}
