@@ -139,6 +139,6 @@
 }
 
 .actions-column {
-  white-space: nowrap; /* Evita que los botones se envuelvan */
-  text-align: center; /* Centra los botones en la celda */
+  white-space: nowrap;
+  text-align: center;
 }
