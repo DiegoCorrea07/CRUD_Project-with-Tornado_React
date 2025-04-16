@@ -1,8 +1,8 @@
 import { FaPen, FaTrash } from 'react-icons/fa';
 
-const FlightList = ({ flights, onDelete, onEdit }) => {
+const FlightList = ({ flights, onDelete, onEdit, isAdmin }) => {
   return (
-    <div className="flight-list-container"> {/* Contenedor para la tabla */}
+    <div className="flight-list-container">
       <table className="flight-table">
         <thead>
           <tr>
@@ -12,7 +12,7 @@ const FlightList = ({ flights, onDelete, onEdit }) => {
             <th>Destino</th>
             <th>Llegada</th>
             <th>Salida</th>
-            <th className="actions-column">Acciones</th> {/* Clase específica para la columna de acciones */}
+            <th className="actions-column">Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -26,7 +26,9 @@ const FlightList = ({ flights, onDelete, onEdit }) => {
               <td>{new Date(flight.departure_time).toLocaleString()}</td>
               <td className="actions-column">
                 <button onClick={() => onEdit(flight)} className="edit-button"><FaPen/> Editar</button>
-                <button onClick={() => onDelete(flight.id)} className="delete-button"><FaTrash/> Eliminar</button>
+                {isAdmin && (
+                  <button onClick={() => onDelete(flight.id)} className="delete-button"><FaTrash/> Eliminar</button>
+                )}
               </td>
             </tr>
           ))}

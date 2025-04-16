@@ -50,7 +50,7 @@
   display: flex;
   gap: 10px;
   margin-top: 20px;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .add-flight-button {
@@ -141,4 +141,34 @@
 .actions-column {
   white-space: nowrap;
   text-align: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+.header h1 {
+    margin: 0;
+    color: #333; /* Color del texto del título */
+}
+
+.logout-button {
+    background-color: #1a1a1a;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #c82333;
 }
