@@ -3,7 +3,7 @@ import pyodbc
 def get_connection():
     connection = pyodbc.connect(
         "DRIVER={ODBC Driver 17 for SQL Server};"
-        "SERVER=***********;"  # Reemplaza con tu servidor
+        "SERVER=DIEGOC\\SQLEXPRESS02;"
         "DATABASE=FlightDB;"
         "Trusted_Connection=yes;"
     )
@@ -24,6 +24,16 @@ def create_table_if_not_exists(connection):
         destination NVARCHAR(100) NOT NULL,
         departure_time DATETIME NOT NULL,
         arrival_time DATETIME NOT NULL
+    );
+    
+    IF NOT EXISTS (
+        SELECT * FROM sysobjects WHERE name='users' AND xtype='U'
+    )
+    CREATE TABLE users (
+        id INT PRIMARY KEY IDENTITY(1,1),
+        username NVARCHAR(50) UNIQUE NOT NULL,
+        password_hash NVARCHAR(128) NOT NULL,
+        role NVARCHAR(20) DEFAULT 'user'
     );
     """
     with connection.cursor() as cursor:
